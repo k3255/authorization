@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>인증 완료</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding-top: 50px; }
+        .code-box {
+            display: inline-block;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            font-family: monospace;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+<h2>인증 성공</h2>
+<p>인가 코드</p>
+<div class="code-box">
+    <span id="auth-code">로딩 중...</span>
+</div>
+
+<script>
+    window.onload = function() {
+        const params = new URLSearchParams(window.location.search);
+        const authCode = params.get('code');
+        const codeDisplayElement = document.getElementById('auth-code');
+
+        if (authCode) {
+            codeDisplayElement.textContent = authCode;
+        } else {
+            codeDisplayElement.textContent = "코드를 찾을 수 없습니다.";
+            codeDisplayElement.style.color = 'red';
+        }
+    };
+</script>
+</body>
+</html>

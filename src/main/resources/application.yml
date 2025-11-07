@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: authorization
+  security:
+    oauth2:
+      client:
+        registration:
+          # "google"이 {registrationId}
+          google:
+            client-id: "459443342591-4lok3jglaths8fg6l6qhcjn6tikg241i.apps.googleusercontent.com"
+            client-secret: "SECRET"
+            scope:
+              - openid
+              - profile
+              - email
+        # provider 설정은 필수는 아니지만, 명시적으로 추가할 수 있음
+        # spring-boot-starter-oauth2-client가 google의 issuer-uri를 자동으로 알고 있음
+        # provider:
+        #   google:
+        #     issuer-uri: https://accounts.google.com
+server:
+#  port: 18096
+  port: 8081
+
+authorization-server:
+  issuer-url: http://localhost:8081
+#  issuer-url: http://192.168.3.130:18096
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.security.oauth2.server.authorization: TRACE
+
+clients:
+  issuer-server:
+    url: http://localhost:8080
+#    url: http://192.168.3.130:8096
+  redirect-url: http://localhost:8081/auth/callback
+#  redirect-url: http://192.168.3.130:18096/auth/callback
