@@ -1,12 +1,13 @@
-FROM openjdk:21-jdk-bookworm as builder
+FROM amazoncorretto:21-alpine-jdk as builder
 
 WORKDIR /app
 
 COPY . .
 
+RUN chmod +x ./gradlew
 RUN ./gradlew clean build -x test
 
-FROM openjdk:21-jre-bookworm
+FROM amazoncorretto:21-alpine-jre
 
 WORKDIR /app
 
