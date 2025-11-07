@@ -8,7 +8,7 @@ RUN ./gradlew clean build -x test
 
 RUN mkdir -p build/libs && \
     ls -al build/libs && \
-    sh -c 'for f in build/libs/*.jar; do cp "$f" build/libs/app.jar && break; done' && \
+    sh -c 'f=$(ls -S build/libs/*.jar | head -n 1); cp "$f" build/libs/app.jar' && \
     ls -al build/libs
     
 # runtime stage
