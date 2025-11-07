@@ -1,4 +1,4 @@
-FROM openjdk:21-jdk-slim as builder
+FROM openjdk:21-jdk-bookworm as builder
 
 WORKDIR /app
 
@@ -6,7 +6,7 @@ COPY . .
 
 RUN ./gradlew clean build -x test
 
-FROM openjdk:21-jre-slim-bookworm
+FROM openjdk:21-jre-bookworm
 
 WORKDIR /app
 
