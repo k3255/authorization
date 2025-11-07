@@ -20,10 +20,10 @@ spring:
         #     issuer-uri: https://accounts.google.com
 server:
 #  port: 18096
-  port: 8081
+  port: 8080
 
 authorization-server:
-  issuer-url: http://localhost:8081
+  issuer-url: http://localhost:8080
 #  issuer-url: http://192.168.3.130:18096
 logging:
   level:
@@ -34,5 +34,5 @@ clients:
   issuer-server:
     url: http://localhost:8080
 #    url: http://192.168.3.130:8096
-  redirect-url: http://localhost:8081/auth/callback
+  redirect-url: http://localhost:8080/auth/callback
 #  redirect-url: http://192.168.3.130:18096/auth/callback
